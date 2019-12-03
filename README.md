@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+## Zenon: Projet Android UP8 2019-2020
 
-You can use the [editor on GitHub](https://github.com/Ziriben/zenon/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+![Zenon](https://github.com/Ziriben/Zenon/raw/master/Zenon.gmx/sprites/images/sprLogo_0.png)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Zenon is a [Shoot'Em Up](https://en.wikipedia.org/wiki/Shoot_%27em_up) style 2D Android game, in which you skip straight to the serious business by facing only bosses, which fire high-speed projectiles your way. Zenon is also an unforgiving [perma-death](https://en.wikipedia.org/wiki/Permadeath) game, meaning you die right away after being hit by any enemy projectiles, and have to start over, good luck! 
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### How to play
 
-```markdown
-Syntax highlighted code block
+Download and install the APK file on your Android phone, run the "Zenon" app, then use the main menu to navigate 
 
-# Header 1
-## Header 2
-### Header 3
+- Start: press this to go the ship-selection menu
+- Settings: change some in-game settings
+- About: the about section of the game
+- Exit: self-explanatory
 
-- Bulleted
-- List
+##
+##
+![Zenon](https://github.com/Ziriben/Zenon/raw/master/Zenon.gmx/sprites/images/sprLogo_0.png)
 
-1. Numbered
-2. List
+Zenon est un jeu Android 2D de type [Shoot'Em Up](https://fr.wikipedia.org/wiki/Shoot_%27em_up), dans lequel vous devez affronter des boss qui essaient de vous éliminer avec leur projectiles à haute vitesse! Zenon est un jeu [perma-death](https://fr.wikipedia.org/wiki/Mort_permanente), signifiant qu'il suffit d'être touché une fois pour perdre et devoir reprendre du début. Bonne chance!
 
-**Bold** and _Italic_ and `Code` text
+### Comment jouer
 
-[Link](url) and ![Image](src)
-```
+Téléchargez et installez le fichier APK sur votre téléphone Android, lancez l'application "Zenon" puis naviguez grace au menu principal 
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Ziriben/zenon/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- Start: appuiez ici pour allez au menu de selection de vaisseau
+- Settings: changez des paramètres de jeu
+- About: la section "à propos" du jeu
+- Exit: quittez le jeu 
