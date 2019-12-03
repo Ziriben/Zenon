@@ -24,7 +24,7 @@ Zenon est un jeu Android 2D de type [Shoot'Em Up](https://fr.wikipedia.org/wiki/
 
 Téléchargez et installez le fichier APK sur votre téléphone Android, lancez l'application "Zenon" puis naviguez grace au menu principal 
 
-- Start: appuiez ici pour allez au menu de selection de vaisseau
+- Start: appuyez ici pour allez au menu de selection de vaisseau
 - Settings: changez des paramètres de jeu
 - About: la section "à propos" du jeu
 - Exit: quittez le jeu 
