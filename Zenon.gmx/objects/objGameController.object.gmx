@@ -25,7 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if (room==roomBoss1) audio_play_sound(sndBoss1,10,true);
+            <string>if global.music_on==true{
+    if (room==roomBoss1_intro) {
+        audio_stop_all();
+        audio_play_sound(sndBoss1,10,true);}
+    else if (room==roomBoss2_intro) {
+        audio_stop_all();
+        audio_play_sound(sndBoss2,10,true);}
+    else if (room==roomBoss3_intro) {
+        audio_stop_all();
+        audio_play_sound(sndBoss3,10,true);}}
+else audio_stop_all();
 </string>
           </argument>
         </arguments>

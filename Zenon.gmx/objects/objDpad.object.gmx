@@ -212,6 +212,8 @@ if (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_up)) {
 if !(keyboard_check(vk_up) || keyboard_check(vk_right) || keyboard_check(vk_down) || keyboard_check(vk_left)) {image_index=0; image_alpha=0.85; if (ctrlMode==1) {ctrlMode = 0; show_debug_message("Ctrl Mode: "+string(ctrlMode));}}
 else image_alpha=0.65;
 
+if place_meeting(x,y,objPlayer) image_alpha=0.05;
+
 if !instance_exists(objPlayer)  {instance_destroy(objBtn); instance_destroy(); }
 </string>
           </argument>
@@ -1164,7 +1166,7 @@ show_debug_message("Ctrl Mode: "+string(ctrlMode));
 
         swipe = true;
         ctrlMode = 2;
-        show_debug_message("Ctrl Mode: "+string(ctrlMode)+" this HOE");
+        show_debug_message("Ctrl Mode: "+string(ctrlMode)+" type 2!");
         mouseXStart = mouse_x;
         mouseYStart = mouse_y;
  

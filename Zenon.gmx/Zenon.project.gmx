@@ -5,7 +5,10 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound">
+    <sound>sound\sndMenu</sound>
     <sound>sound\sndBoss1</sound>
+    <sound>sound\sndBoss2</sound>
+    <sound>sound\sndBoss3</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
@@ -48,17 +51,36 @@
     <sprite>sprites\sprPlayerBullet1</sprite>
     <sprite>sprites\sprBoss1</sprite>
     <sprite>sprites\sprBossBullet1</sprite>
+    <sprite>sprites\sprBossBullet1f</sprite>
     <sprite>sprites\sprB1B2</sprite>
     <sprite>sprites\sprBoss1txt</sprite>
+    <sprite>sprites\sprBoss2txt</sprite>
+    <sprite>sprites\sprBoss3txt</sprite>
+    <sprite>sprites\sprSettingsButton</sprite>
+    <sprite>sprites\sprAbout</sprite>
+    <sprite>sprites\sprBoss2</sprite>
+    <sprite>sprites\sprb2b1</sprite>
+    <sprite>sprites\sprb2b2</sprite>
+    <sprite>sprites\sprB2cannon</sprite>
+    <sprite>sprites\sprB2missile</sprite>
+    <sprite>sprites\sprBoss3</sprite>
+    <sprite>sprites\sprb3b1</sprite>
+    <sprite>sprites\sprB3part</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgSpace1</background>
     <background>background\bkgSpace2</background>
+    <background>background\bkgSpace3</background>
+    <background>background\bkgSpace4</background>
     <background>background\bkgGrid</background>
     <background>background\bkgBlack</background>
     <background>background\bkgWhite</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\path_b2b2_0</path>
+    <path>paths\path_b2b2_1</path>
+    <path>paths\path_b2b2_2</path>
+  </paths>
   <scripts name="scripts">
     <scripts name="grid_effect">
       <script>scripts\scrGridCreate.gml</script>
@@ -69,6 +91,10 @@
       <script>scripts\scrGridUpdate.gml</script>
     </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\font_roddenberry</font>
+    <font>fonts\font_roddenberry_big</font>
+  </fonts>
   <objects name="objects">
     <objects name="UI_elements">
       <object>objects\objLogo</object>
@@ -91,6 +117,7 @@
       <object>objects\objSelectShip6</object>
       <object>objects\objPlayerChangeAnim</object>
       <object>objects\objTestArena</object>
+      <object>objects\objPlayShip</object>
     </objects>
     <object>objects\objViewController</object>
     <object>objects\objGameController</object>
@@ -115,21 +142,57 @@
       <object>objects\objBossBulletParent</object>
       <object>objects\objBossParent</object>
       <objects name="Boss1">
+        <object>objects\objBoss1Intro</object>
         <object>objects\objBoss1Spawn</object>
         <object>objects\objBoss1</object>
         <object>objects\objBoss1b1</object>
         <object>objects\objB1B2</object>
         <object>objects\objBoss1Wave1</object>
       </objects>
+      <objects name="Boss2">
+        <object>objects\objBoss2Intro</object>
+        <object>objects\objBoss2Spawn</object>
+        <object>objects\objBoss2</object>
+        <object>objects\objB2b1</object>
+        <object>objects\objB2b2_1</object>
+        <object>objects\objB2b2_2</object>
+        <object>objects\objB2b2_3</object>
+        <object>objects\objBoss2Wave1</object>
+        <object>objects\objBoss2Wave2</object>
+        <object>objects\objB2cannon</object>
+        <object>objects\objB2missile</object>
+      </objects>
+      <objects name="Boss3">
+        <object>objects\objBoss3Intro</object>
+        <object>objects\objBoss3Spawn</object>
+        <object>objects\objBoss3</object>
+        <object>objects\objB3b1</object>
+        <object>objects\objBoss3Wave1</object>
+        <object>objects\objBoss3Wave2</object>
+        <object>objects\objB3missile</object>
+      </objects>
     </objects>
-    <object>objects\objBoss1Intro</object>
+    <object>objects\objFlash</object>
+    <object>objects\objPlayerChoice</object>
+    <object>objects\objSettings</object>
+    <object>objects\objInit</object>
+    <object>objects\objMusicButton</object>
+    <object>objects\objAbout</object>
+    <object>objects\objWin</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\roomBoss1</room>
-    <room>rooms\room4</room>
-    <room>rooms\roomShipSelection</room>
+    <room>rooms\roomInit</room>
     <room>rooms\roomMenu</room>
     <room>rooms\roomSettings</room>
+    <room>rooms\roomAbout</room>
+    <room>rooms\roomShipSelection</room>
+    <room>rooms\roomBoss1_intro</room>
+    <room>rooms\roomBoss1</room>
+    <room>rooms\roomBoss2_intro</room>
+    <room>rooms\roomBoss2</room>
+    <room>rooms\roomBoss3_intro</room>
+    <room>rooms\roomBoss3</room>
+    <room>rooms\roomWin</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

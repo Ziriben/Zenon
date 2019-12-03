@@ -3,7 +3,7 @@
   <caption></caption>
   <width>540</width>
   <height>960</height>
-  <vsnap>1</vsnap>
+  <vsnap>16</vsnap>
   <hsnap>1</hsnap>
   <isometric>0</isometric>
   <speed>60</speed>
@@ -112,7 +112,9 @@ surface_resize(application_surface, view_wview[0], view_hview[0]);
     <instance objName="objDpad" x="6" y="804" name="inst_FE6D8DE6" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objBtn" x="387" y="804" name="inst_6D557442" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objGrid" x="102" y="546" name="inst_0AFC6153" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTestArena" x="277" y="581" name="inst_693C8C97" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objTestArena" x="273" y="581" name="inst_693C8C97" locked="0" code="" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="objGameController" x="70" y="3" name="inst_E79AEC8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlayShip" x="272" y="742" name="inst_169F368D" locked="0" code="" scaleX="1.5" scaleY="1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

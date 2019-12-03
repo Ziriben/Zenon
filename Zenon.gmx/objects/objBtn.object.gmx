@@ -101,7 +101,9 @@ display_aspect_ratio = display_w/display_h;
             <kind>1</kind>
             <string>//changing image depending on key pressed
 if keyboard_check(vk_space) {image_index=1; image_alpha=0.65;}
-else image_index=0; image_alpha=0.85;
+else {image_index=0; image_alpha=0.85;}
+
+if place_meeting(x,y,objPlayer) image_alpha=0.05; 
 </string>
           </argument>
         </arguments>

@@ -12,7 +12,7 @@
     <bitRate>192</bitRate>
   </bitRates>
   <sampleRates>
-    <sampleRate>44100</sampleRate>
+    <sampleRate>32000</sampleRate>
   </sampleRates>
   <types>
     <type>1</type>
@@ -22,8 +22,8 @@
   </bitDepths>
   <preload>-1</preload>
   <data>sndBoss1.mp3</data>
-  <compressed>0</compressed>
+  <compressed>1</compressed>
   <streamed>0</streamed>
-  <uncompressOnLoad>0</uncompressOnLoad>
+  <uncompressOnLoad>1</uncompressOnLoad>
   <audioGroup>0</audioGroup>
 </sound>
