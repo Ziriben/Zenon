@@ -2,7 +2,7 @@
 
 ![Zenon](https://github.com/Ziriben/Zenon/raw/master/Zenon.gmx/sprites/images/sprLogo_0.png)
 
-Zenon is a [Shoot'Em Up](https://en.wikipedia.org/wiki/Shoot_%27em_up) style 2D Android game, in which you skip straight to the serious business by facing only bosses, which fire high-speed projectiles your way. Zenon is also an unforgiving [perma-death](https://en.wikipedia.org/wiki/Permadeath) game, meaning you die right away after being hit by any enemy projectiles, and have to start over, good luck! 
+Zenon is a [Shoot'Em Up](https://en.wikipedia.org/wiki/Shoot_%27em_up) style 2D Android game (made with GameMaker Studio), in which you skip straight to the serious business by facing only bosses, which fire high-speed projectiles your way. Zenon is also an unforgiving [perma-death](https://en.wikipedia.org/wiki/Permadeath) game, meaning you die right away after being hit by any enemy projectiles, and have to start over, good luck! 
 
 
 ### How to play
@@ -18,7 +18,7 @@ Download and install the APK file on your Android phone, run the "Zenon" app, th
 ##
 ![Zenon](https://github.com/Ziriben/Zenon/raw/master/Zenon.gmx/sprites/images/sprLogo_0.png)
 
-Zenon est un jeu Android 2D de type [Shoot'Em Up](https://fr.wikipedia.org/wiki/Shoot_%27em_up), dans lequel vous devez affronter des boss qui essaient de vous éliminer avec leur projectiles à haute vitesse! Zenon est un jeu [perma-death](https://fr.wikipedia.org/wiki/Mort_permanente), signifiant qu'il suffit d'être touché une fois pour perdre et devoir reprendre du début. Bonne chance!
+Zenon est un jeu Android 2D de type [Shoot'Em Up](https://fr.wikipedia.org/wiki/Shoot_%27em_up) (fait avec GameMaker Studio), dans lequel vous devez affronter des boss qui essaient de vous éliminer avec leur projectiles à haute vitesse! Zenon est un jeu [perma-death](https://fr.wikipedia.org/wiki/Mort_permanente), signifiant qu'il suffit d'être touché une fois pour perdre et devoir reprendre du début. Bonne chance!
 
 ### Comment jouer
 
