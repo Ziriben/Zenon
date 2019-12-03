@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\sndBoss1</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
     <sprites name="Player Sprites">
@@ -44,15 +46,17 @@
     <sprite>sprites\sprGridFixed</sprite>
     <sprite>sprites\sprBtn</sprite>
     <sprite>sprites\sprPlayerBullet1</sprite>
-    <sprite>sprites\sprite31</sprite>
-    <sprite>sprites\sprB1B1</sprite>
+    <sprite>sprites\sprBoss1</sprite>
     <sprite>sprites\sprBossBullet1</sprite>
     <sprite>sprites\sprB1B2</sprite>
+    <sprite>sprites\sprBoss1txt</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkgSpace1</background>
     <background>background\bkgSpace2</background>
     <background>background\bkgGrid</background>
+    <background>background\bkgBlack</background>
+    <background>background\bkgWhite</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -66,53 +70,66 @@
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\object0</object>
-    <object>objects\objLogo</object>
-    <object>objects\objMenuStart</object>
-    <object>objects\objMenuSettings</object>
-    <object>objects\objMenuAbout</object>
-    <object>objects\objMenuExit</object>
-    <object>objects\objMenu</object>
-    <object>objects\objSelectShipTitle</object>
-    <object>objects\objSelectShip1</object>
-    <object>objects\objSelectShip2</object>
-    <object>objects\objSelectShip3</object>
-    <object>objects\objSelectShip4</object>
-    <object>objects\objSelectShip5</object>
-    <object>objects\objSelectShip6</object>
-    <object>objects\objPlayer_old_</object>
-    <object>objects\objPlayer</object>
-    <object>objects\objPlayer1</object>
-    <object>objects\objPlayer2</object>
-    <object>objects\objPlayer3</object>
-    <object>objects\objPlayer4</object>
-    <object>objects\objPlayer5</object>
-    <object>objects\objPlayer6</object>
-    <object>objects\objUp</object>
-    <object>objects\objDown</object>
-    <object>objects\objRight</object>
-    <object>objects\objLeft</object>
+    <objects name="UI_elements">
+      <object>objects\objLogo</object>
+      <object>objects\objGrid</object>
+    </objects>
+    <objects name="Main Menu">
+      <object>objects\objMenu</object>
+      <object>objects\objMenuStart</object>
+      <object>objects\objMenuSettings</object>
+      <object>objects\objMenuAbout</object>
+      <object>objects\objMenuExit</object>
+    </objects>
+    <objects name="Ship Selection Menu">
+      <object>objects\objSelectShipTitle</object>
+      <object>objects\objSelectShip1</object>
+      <object>objects\objSelectShip2</object>
+      <object>objects\objSelectShip3</object>
+      <object>objects\objSelectShip4</object>
+      <object>objects\objSelectShip5</object>
+      <object>objects\objSelectShip6</object>
+      <object>objects\objPlayerChangeAnim</object>
+      <object>objects\objTestArena</object>
+    </objects>
     <object>objects\objViewController</object>
-    <object>objects\objTestArena</object>
-    <object>objects\objPlayerChangeAnim</object>
-    <object>objects\objDpad</object>
-    <object>objects\objBtn</object>
-    <object>objects\objGrid</object>
-    <object>objects\objPlayerBullet</object>
-    <object>objects\objPlayerBullet1</object>
-    <object>objects\objBoss1</object>
-    <object>objects\objBoss1b1</object>
-    <object>objects\objBossBulletParent</object>
-    <object>objects\objBoss1Wave1</object>
-    <object>objects\objB1B2</object>
-    <object>objects\objPlayerDeath</object>
-    <object>objects\objControllerIngame</object>
+    <object>objects\objGameController</object>
+    <object>objects\objPlayer_old_</object>
+    <objects name="Onscreen Controls">
+      <object>objects\objDpad</object>
+      <object>objects\objBtn</object>
+    </objects>
+    <objects name="Player">
+      <object>objects\objPlayer</object>
+      <object>objects\objPlayerDeath</object>
+      <object>objects\objPlayerBullet</object>
+      <object>objects\objPlayerBullet1</object>
+      <object>objects\objPlayer1</object>
+      <object>objects\objPlayer2</object>
+      <object>objects\objPlayer3</object>
+      <object>objects\objPlayer4</object>
+      <object>objects\objPlayer5</object>
+      <object>objects\objPlayer6</object>
+    </objects>
+    <objects name="Bosses">
+      <object>objects\objBossBulletParent</object>
+      <object>objects\objBossParent</object>
+      <objects name="Boss1">
+        <object>objects\objBoss1Spawn</object>
+        <object>objects\objBoss1</object>
+        <object>objects\objBoss1b1</object>
+        <object>objects\objB1B2</object>
+        <object>objects\objBoss1Wave1</object>
+      </objects>
+    </objects>
+    <object>objects\objBoss1Intro</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomBoss1</room>
+    <room>rooms\room4</room>
+    <room>rooms\roomShipSelection</room>
     <room>rooms\roomMenu</room>
     <room>rooms\roomSettings</room>
-    <room>rooms\roomShipSelection</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -49,11 +49,11 @@ image_yscale=0.5;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>display_w = round(window_get_width());
+            <string>/*display_w = round(window_get_width());
 
 display_h = round(window_get_height());
 
-display_aspect_ratio = display_w/display_h;
+display_aspect_ratio = display_w/display_h;*/
 </string>
           </argument>
         </arguments>
@@ -74,15 +74,72 @@ display_aspect_ratio = display_w/display_h;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>keyUp    = virtual_key_add(x, y, sprite_width, sprite_height/3, vk_up);
-keyRight = virtual_key_add(x+2*sprite_width/3, y, sprite_width/3, sprite_height, vk_right);
-keyDown  = virtual_key_add(x, y+2*sprite_height/3, sprite_width, sprite_height/3,vk_down);
-keyLeft  = virtual_key_add(x, y, sprite_width/3, sprite_height, vk_left);
+            <string>/// --- Virtual Keys ---
 
-//virtual_key_show(keyUp);
-//virtual_key_show(keyRight);
-//virtual_key_show(keyDown);
-//virtual_key_show(keyLeft);
+keyUp    = virtual_key_add(x, y/*-100*/, sprite_width, sprite_height/3/*+100*/, vk_up);
+keyRight = virtual_key_add(x+2*sprite_width/3, y, sprite_width/3/*+100*/, sprite_height, vk_right);
+keyDown  = virtual_key_add(x, y+2*sprite_height/3, sprite_width, sprite_height/3,vk_down);
+keyLeft  = virtual_key_add(x/*-100*/, y, sprite_width/3/*+100*/, sprite_height, vk_left);
+
+/*
+virtual_key_show(keyUp);
+virtual_key_show(keyRight);
+virtual_key_show(keyDown);
+virtual_key_show(keyLeft);
+*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Swipe Control Variables
+
+mouseXStart = 0;
+mouseYStart = 0;
+
+swipe = false;
+moveDir = 0;  //Point of Direction
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// --- Controller Mode ---
+//Either key or gesture mode, depending on which was used first:
+//if you start by using the gesture then it doesnt use the Dpad when you touch the pad (it would be bad) 
+//if you start by using the Dpad, it doesnt use gesture while on it, but as soon as off of it it switches to gesture...
+// 0 is none, 1 is Dpad, 2 is gesture. put back to 0 when everything is released to reinitialize
+ctrlMode=0;
 </string>
           </argument>
         </arguments>
@@ -106,20 +163,1154 @@ keyLeft  = virtual_key_add(x, y, sprite_width/3, sprite_height, vk_left);
           <argument>
             <kind>1</kind>
             <string>//changing image depending on key pressed
-if keyboard_check(vk_up) image_index=1;
-if (keyboard_check(vk_up) &amp;&amp; keyboard_check(vk_right)) image_index=2;
-else if keyboard_check(vk_right) image_index=3;
-if (keyboard_check(vk_right) &amp;&amp; keyboard_check(vk_down)) image_index=4;
-else if keyboard_check(vk_down) image_index=5;
-if (keyboard_check(vk_down) &amp;&amp; keyboard_check(vk_left)) image_index=6;
-else if keyboard_check(vk_left) image_index=7;
-if (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_up)) image_index=8;
+if keyboard_check(vk_up) {
+                            image_index=1;
+                          
+                            //show_debug_message("▲▲▲");
+                            }
+                            
+if (keyboard_check(vk_up) &amp;&amp; keyboard_check(vk_right)) {
+                            image_index=2;
+                           
+                            //show_debug_message("↗↗↗");
+                            }
+                            
+else if keyboard_check(vk_right) {
+                            image_index=3;
+                     
+                           // show_debug_message("►►►");
+                           }
+                            
+if (keyboard_check(vk_right) &amp;&amp; keyboard_check(vk_down)) {
+                            image_index=4;
+                           
+                           // show_debug_message("↘↘↘");
+                           }
+                            
+else if keyboard_check(vk_down) {
+                            image_index=5;
+                    
+                          //  show_debug_message("▼▼▼");
+                          }
+                            
+if (keyboard_check(vk_down) &amp;&amp; keyboard_check(vk_left)) {
+                            image_index=6;
+          
+                           // show_debug_message("↙↙↙");
+                           }
+                            
+else if keyboard_check(vk_left) {
+                            image_index=7;
+                           // show_debug_message("◄◄◄");
+                           }
+                            
+if (keyboard_check(vk_left) &amp;&amp; keyboard_check(vk_up)) {
+                            image_index=8;
+                           // show_debug_message("↖↖↖");
+                           }
 
-if !(keyboard_check(vk_up) || keyboard_check(vk_right) || keyboard_check(vk_down) || keyboard_check(vk_left)) {image_index=0; image_alpha=0.85;}
+if !(keyboard_check(vk_up) || keyboard_check(vk_right) || keyboard_check(vk_down) || keyboard_check(vk_left)) {image_index=0; image_alpha=0.85; if (ctrlMode==1) {ctrlMode = 0; show_debug_message("Ctrl Mode: "+string(ctrlMode));}}
 else image_alpha=0.65;
+
+if !instance_exists(objPlayer)  {instance_destroy(objBtn); instance_destroy(); }
 </string>
           </argument>
         </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>instance_exists(objPlayer)</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// --- swipe controls ---
+///swipe Action Individualy
+/*
+if (device_mouse_check_button_pressed(0, mb_left))
+//if (mouse_check_button_pressed(mb_left))
+    {
+    swipe = true;
+    mouseXStart = mouse_x;
+    mouseYStart = mouse_y;
+    }
+    */
+
+if (device_mouse_check_button_released(0, mb_left))  
+//if (mouse_check_button_released(mb_left))
+    {   
+    swipe = false;
+    if (ctrlMode==2) {ctrlMode = 0; show_debug_message("Ctrl Mode: "+string(ctrlMode));}
+    /*keyboard_key_release(vk_right);
+    keyboard_key_release(vk_left);
+    keyboard_key_release(vk_up);
+    keyboard_key_release(vk_down);*/
+    
+    image_index=0;
+    image_alpha=0.85;
+    }
+
+if (swipe == true)
+{
+moveDir = point_direction(mouseXStart, mouseYStart, mouse_x, mouse_y);
+//ctrlMode = 2;
+//show_debug_message("moveDir = "+string(moveDir));
+image_alpha=0.65;
+
+
+    //if (device_mouse_check_button_released(0, mb_left))
+    //{
+    //swipe = false;
+   // swipeSpeed = point_distance(mouseXStart, mouseYStart, mouseX, mouseY) / swipeTime;
+   // swipeTime = 0;
+ 
+        if ((moveDir &gt;0 &amp;&amp; moveDir &lt; 25 /*+ 20*/ ) or (moveDir &lt; 359 &amp;&amp; moveDir &gt; 335 /*- 20*/) ) //Right
+        {
+          /*keyboard_key_press(vk_right);
+          keyboard_key_release(vk_left);
+          
+          keyboard_key_release(vk_up);
+         keyboard_key_release(vk_down);*/
+         
+         objPlayer.hspeed+=1;
+         image_index=3;
+         
+         //show_debug_message("►►►");
+        } 
+        
+        if (moveDir &gt; 25 &amp;&amp; moveDir &lt; 65 ) { //Up-Right
+        /*keyboard_key_press(vk_up);
+        keyboard_key_press(vk_right);
+        keyboard_key_release(vk_down);
+        keyboard_key_release(vk_left);*/
+        
+        objPlayer.hspeed+=1;
+        objPlayer.vspeed-=1;
+        image_index=2;
+        
+        //show_debug_message("↗↗↗");
+        }
+        
+        //else
+        
+        if ((moveDir &gt; 65 /*- 20*/) and (moveDir &lt; 115 /*+ 20*/)) //Up
+        {  
+         /*keyboard_key_press(vk_up);
+         keyboard_key_release(vk_down);
+         
+         keyboard_key_release(vk_right);
+         keyboard_key_release(vk_left);*/
+         
+         objPlayer.vspeed-=1;
+         image_index=1;
+         
+         //show_debug_message("▲▲▲");
+        }
+        
+         if (moveDir &gt; 115 &amp;&amp; moveDir &lt; 155 ) { //Up-Left
+        /*keyboard_key_press(vk_up);
+        keyboard_key_press(vk_left);
+        keyboard_key_release(vk_down);
+        keyboard_key_release(vk_right);*/
+        
+        objPlayer.hspeed-=1;
+        objPlayer.vspeed-=1;
+        image_index=9;
+        
+        //show_debug_message("↖↖↖");
+        }
+
+        //else 
+        if ((moveDir &gt; 155 /*- 20*/) and (moveDir &lt; 205 /*+ 20*/)) //Left
+        {
+         /*keyboard_key_press(vk_left);
+         keyboard_key_release(vk_right);
+         
+         keyboard_key_release(vk_up);
+         keyboard_key_release(vk_down);*/
+         
+         objPlayer.hspeed-=1;
+         
+         image_index=7;
+        
+         
+         //show_debug_message("◄◄◄");
+        } 
+        
+         if (moveDir &gt; 205 &amp;&amp; moveDir &lt; 245 ) { //Down-Left
+        /*keyboard_key_press(vk_down);
+        keyboard_key_press(vk_left);
+        keyboard_key_release(vk_up);
+        keyboard_key_release(vk_right);*/
+        
+        objPlayer.hspeed-=1;
+        objPlayer.vspeed+=1;
+        image_index=6;
+        
+        //show_debug_message("↙↙↙");
+        }
+        
+        //else
+        if ((moveDir &gt; 245 /*- 20*/) and (moveDir &lt; 295 /*+ 20*/)) //Down
+        {
+         /*keyboard_key_press(vk_down);
+         keyboard_key_release(vk_up);
+         
+         keyboard_key_release(vk_right);
+         keyboard_key_release(vk_left);*/
+         
+         
+         objPlayer.vspeed+=1;
+         image_index=5;
+         
+        // show_debug_message("▼▼▼");
+        }
+        
+         if (moveDir &gt; 295 &amp;&amp; moveDir &lt; 335 ) { //Down-Right
+        /*keyboard_key_press(vk_down);
+        keyboard_key_press(vk_right);
+        keyboard_key_release(vk_up);
+        keyboard_key_release(vk_left);*/
+        
+        objPlayer.hspeed+=1;
+        objPlayer.vspeed+=1;
+        image_index=4;
+        
+        //show_debug_message("↘↘↘");
+        }
+        
+   // }
+}
+
+
+/*
+if ((moveDir &gt;0 &amp;&amp; moveDir &lt; 45  ) or (moveDir &lt; 359 &amp;&amp; moveDir &gt; 315 ) ) //Right
+        {
+          keyboard_key_press(vk_right);
+          keyboard_key_release(vk_left);
+        } else
+
+
+        if ((moveDir &gt; 135 ) and (moveDir &lt; 225 )) //Left
+        {
+         keyboard_key_press(vk_left);
+         keyboard_key_release(vk_right);
+        } 
+        
+        if ((moveDir &gt; 45 ) and (moveDir &lt; 135 )) //Up
+        {  
+         keyboard_key_press(vk_up);
+         keyboard_key_release(vk_down);
+        }else 
+        if ((moveDir &gt; 225) and (moveDir &lt; 315 )) //Down
+        {
+         keyboard_key_press(vk_down);
+         keyboard_key_release(vk_up);
+        }
+         */ 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="5" enumb="40">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>swipe</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ctrl mode debug msg
+show_debug_message("Ctrl Mode: "+string(ctrlMode));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="5" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>swipe</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ctrl mode debug msg
+show_debug_message("Ctrl Mode: "+string(ctrlMode));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="5" enumb="38">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>swipe</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ctrl mode debug msg
+show_debug_message("Ctrl Mode: "+string(ctrlMode));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="5" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>611</id>
+        <kind>6</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>swipe</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///ctrl mode debug msg
+show_debug_message("Ctrl Mode: "+string(ctrlMode));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="6" enumb="50">
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>mouse_x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>room_width/2</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>3</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>408</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>-1</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>keyboard_check(vk_up)||keyboard_check(vk_down)||keyboard_check(vk_left)||keyboard_check(vk_right)</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>612</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_variable</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>ctrlMode</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>0</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>403</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>-1</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_if_object</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>-1</isnot>
+        <arguments>
+          <argument>
+            <kind>10</kind>
+            <object>objDpad</object>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>mouse_x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>mouse_y</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>422</id>
+        <kind>1</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//if (keyboard_check(keyUp) || keyboard_check(keyRight) || keyboard_check(keyDown) || keyboard_check(keyLeft)) {
+//if (ctrlMode==0) {ctrlMode=1; show_debug_message("Ctrl Mode: "+string(ctrlMode));}}
+
+        swipe = true;
+        ctrlMode = 2;
+        show_debug_message("Ctrl Mode: "+string(ctrlMode)+" this HOE");
+        mouseXStart = mouse_x;
+        mouseYStart = mouse_y;
+ 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>421</id>
+        <kind>3</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>425</id>
+        <kind>4</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>424</id>
+        <kind>2</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>0</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="8" enumb="64">
@@ -141,6 +1332,27 @@ else image_alpha=0.65;
             <kind>1</kind>
             <string>//draw_sprite_ext(sprDpad,image_index,x,y,image_xscale,image_yscale,0,c_white,image_alpha);
 draw_sprite_ext(sprite_index,image_index,x,y,image_xscale,image_yscale,0,c_white,image_alpha);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (swipe) draw_line_colour(mouseXStart, mouseYStart, mouse_x, mouse_y,c_white,c_white);
 </string>
           </argument>
         </arguments>
